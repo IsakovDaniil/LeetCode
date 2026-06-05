@@ -1,0 +1,22 @@
+import UIKit
+
+func maxArea(_ height: [Int]) -> Int {
+    var left = 0
+    var right = height.count - 1
+    var result = 0
+    
+    while left < right {
+        let width = right - left
+        let minHeight = min(height[left], height[right])
+        let area = width * minHeight
+        result = max(result, area)
+        
+        if height[left] < height[right] {
+            left += 1
+        } else {
+            right -= 1
+        }
+    }
+    return result
+}
+
